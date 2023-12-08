@@ -33,30 +33,28 @@ const FORMAT_DESCRIPTION: &[time::format_description::FormatItem<'_>] = format_d
     version = 2,
     "[year]-[month]-[day] @ [hour repr:12]:[minute]:[second] [period]"
 );
+// The largest number that can be parsed by "OffsetDateTime::from_unix_timestamp_nanos" is 253402300799999999999
 const MAXIMUM_NUMBER_OF_DIGITS: usize = 21;
+const MAXIMUM_NUMBER: i128 = 253_402_300_799_999_999_999;
 const MICROSECONDS: &str = "microseconds";
 const MILLISECONDS: &str = "milliseconds";
 const NANOSECONDS: &str = "nanoseconds";
 const SECONDS: &str = "seconds";
 
-fn pad_to_left(width: usize, input: &str) -> String {
-    format!("{}{input}", " ".repeat(width - input.len()))
-}
+const MICROSECONDS_LEN: usize = MICROSECONDS.len();
+const MILLISECONDS_LEN: usize = MILLISECONDS.len();
+const NANOSECONDS_LEN: usize = NANOSECONDS.len();
+const SECONDS_LEN: usize = SECONDS.len();
+
+const LEN_ARRAY: [usize; 4] = [
+    SECONDS_LEN,
+    MILLISECONDS_LEN,
+    MICROSECONDS_LEN,
+    NANOSECONDS_LEN,
+];
 
 #[allow(clippy::too_many_lines)]
 fn main() {
-    // Use "build.rs"?
-    let pad_to_length = [SECONDS, MILLISECONDS, MICROSECONDS, NANOSECONDS]
-        .iter()
-        .map(|st| st.len())
-        .max()
-        .unwrap();
-
-    let microseconds_str = pad_to_left(pad_to_length, MICROSECONDS);
-    let milliseconds_str = pad_to_left(pad_to_length, MILLISECONDS);
-    let nanoseconds_str = pad_to_left(pad_to_length, NANOSECONDS);
-    let seconds_str = pad_to_left(pad_to_length, SECONDS);
-
     let readtimestamp_args = ReadtimestampArgs::parse();
 
     let timestamp = readtimestamp_args.timestamp;
@@ -149,6 +147,14 @@ fn main() {
 
     match str_to_parse_i_six_four {
         Ok(io) => {
+            if io > MAXIMUM_NUMBER {
+                eprintln!(
+                    "{}",
+                    format!("ERROR: Timestamp candidate {io} is too large (greater than {MAXIMUM_NUMBER})").red());
+
+                return;
+            }
+
             let nanos = OffsetDateTime::from_unix_timestamp_nanos(io).into();
 
             let result: Result<i64, _> = io.try_into();
@@ -194,6 +200,13 @@ fn main() {
 
                 fo
             };
+
+            let width = *LEN_ARRAY.iter().max().unwrap();
+
+            let microseconds_str = pad_to_left(width, MICROSECONDS);
+            let milliseconds_str = pad_to_left(width, MILLISECONDS);
+            let nanoseconds_str = pad_to_left(width, NANOSECONDS);
+            let seconds_str = pad_to_left(width, SECONDS);
 
             let microseconds_data =
                 get_data(&formatter, &now_utc, offset, micros, microseconds_str);
@@ -336,4 +349,8 @@ fn get_data(
             unit,
         }
     }
+}
+
+fn pad_to_left(width: usize, input: &str) -> String {
+    format!("{}{input}", " ".repeat(width - input.len()))
 }
