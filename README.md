@@ -4,14 +4,28 @@ I frequently use Unix timestamps as, or in, file and directory names when I need
 
 ## Installation
 
-```
+```Shell
 # TODO Publish to crates.io
 cargo install --git https://github.com/andrewliebenow/readtimestamp
 ```
 
 ## Usage
 
-```shell
+```Shell
+❯ readtimestamp --help
+Pretty print a Unix timestamp (seconds or milliseconds)
+
+Usage: readtimestamp <TIMESTAMP>
+
+Arguments:
+  <TIMESTAMP>  The Unix timestamp to parse (can be in seconds, milliseconds, or nanoseconds)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
+```
+
+```Shell
 ❯ readtimestamp ./my-saved-file-1704772140
 Attempting to parse "./my-saved-file-1704772140"
 --------------------------------------------------------
