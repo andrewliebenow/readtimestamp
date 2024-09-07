@@ -6,7 +6,7 @@ I frequently use Unix timestamps as, or in, file and directory names when I need
 
 ```
 # TODO To be published to crates.io
-git clone https://github.com/andrewliebenow/readtimestamp && cargo install --path ./readtimestamp
+cargo install --git https://github.com/andrewliebenow/readtimestamp
 ```
 
 ## Usage
