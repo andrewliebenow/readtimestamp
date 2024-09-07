@@ -37,5 +37,5 @@ version = "0.1.0"
 
 [profile.release]
 codegen-units = 1
-lto = true
-strip = true
+lto = "fat"
+strip = "symbols"

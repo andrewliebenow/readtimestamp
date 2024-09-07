@@ -5,7 +5,7 @@ I frequently use Unix timestamps as, or in, file and directory names when I need
 ## Installation
 
 ```
-# TODO To be published to crates.io
+# TODO Publish to crates.io
 cargo install --git https://github.com/andrewliebenow/readtimestamp
 ```
 
