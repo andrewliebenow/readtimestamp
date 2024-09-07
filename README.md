@@ -28,15 +28,16 @@ Options:
 ```Shell
 ❯ readtimestamp ./my-saved-file-1704772140
 Attempting to parse "./my-saved-file-1704772140"
---------------------------------------------------------
+------------------------------------------------
 NOTE: <TIMESTAMP> contains non-digit characters, attempting to find something that looks like a timestamp
+Parsing possible timestamp found in <TIMESTAMP>: "1704772140"
 
 Best candidate unit:
-(     seconds) UTC: 2024-01-09 @ 03:49:00 AM local: 2024-01-08 @ 09:49:00 PM (1 month 5 days 14 hours 1 minute 47 seconds ago)
+(     seconds) UTC: 2024-01-09 @ 03:49:00 AM local: 2024-01-08 @ 10:49:00 PM (7 months 4 weeks 1 day 11 hours 25 minutes ago)
 
-(milliseconds) UTC: 1970-01-20 @ 05:32:52 PM local: 1970-01-20 @ 11:32:52 AM (54 years 1 month 6 days 23 hours 45 minutes ago)
-(microseconds) UTC: 1970-01-01 @ 12:28:24 AM local: 1969-12-31 @ 06:28:24 PM (54 years 1 month 3 weeks 5 days 16 hours ago)
-( nanoseconds) UTC: 1970-01-01 @ 12:00:01 AM local: 1969-12-31 @ 06:00:01 PM (54 years 1 month 3 weeks 5 days 17 hours ago)
+(milliseconds) UTC: 1970-01-20 @ 05:32:52 PM local: 1970-01-20 @ 12:32:52 PM (54 years 8 months 11 hours 9 minutes 14 seconds ago)
+(microseconds) UTC: 1970-01-01 @ 12:28:24 AM local: 1969-12-31 @ 07:28:24 PM (54 years 8 months 2 weeks 6 days 4 hours ago)
+( nanoseconds) UTC: 1970-01-01 @ 12:00:01 AM local: 1969-12-31 @ 07:00:01 PM (54 years 8 months 2 weeks 6 days 4 hours ago)
 ```
 
 ## License
