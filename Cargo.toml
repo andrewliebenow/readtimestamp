@@ -1,36 +1,36 @@
 [dependencies]
-anyhow = {default-features = false, features = [
+anyhow = { default-features = false, features = [
   "backtrace",
-  "std"
-], version = "=1.0.89"}
-clap = {default-features = false, features = [
+  "std",
+], version = "=1.0.89" }
+clap = { default-features = false, features = [
   "color",
   "derive",
   "help",
   "std",
   "suggestions",
-  "usage"
-], version = "=4.5.17"}
-owo-colors = {default-features = false, version = "=4.1.0"}
-regex = {default-features = false, features = [
+  "usage",
+], version = "=4.5.20" }
+owo-colors = { default-features = false, version = "=4.1.0" }
+regex = { default-features = false, features = [
   "perf",
-  "std"
-], version = "=1.10.6"}
-time = {default-features = false, features = [
+  "std",
+], version = "=1.11.0" }
+time = { default-features = false, features = [
   "formatting",
   "local-offset",
-  "macros"
-], version = "=0.3.36"}
-timeago = {default-features = false, version = "=0.4.2"}
-tracing = {default-features = false, version = "=0.1.40"}
-tracing-subscriber = {default-features = false, features = [
+  "macros",
+], version = "=0.3.36" }
+timeago = { default-features = false, version = "=0.4.2" }
+tracing = { default-features = false, version = "=0.1.40" }
+tracing-subscriber = { default-features = false, features = [
   "ansi",
   "env-filter",
   "fmt",
   "smallvec",
   "std",
-  "tracing-log"
-], version = "=0.3.18"}
+  "tracing-log",
+], version = "=0.3.18" }
 
 [package]
 edition = "2021"
